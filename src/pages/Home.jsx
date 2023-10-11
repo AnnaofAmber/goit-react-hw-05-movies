@@ -11,11 +11,9 @@ export const Home = ()=>{
         const fetchMovies = async()=>{
             try{
                 const response = await fetchTrendingMovies()
-                console.log(movies);
             if(movies.length === 0){
-                setMovies(response.results)}
-                
-                console.log(response.results);
+                setMovies(response)}
+                console.log(response);
             }
             catch(error){
                 console.log(error);

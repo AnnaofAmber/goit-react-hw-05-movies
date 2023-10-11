@@ -1,12 +1,13 @@
-import { MoviesItem } from "components/MoviesItem/MoviesItem";
+import { Link } from 'react-router-dom';
 
 export const MoviesList = ({ data }) => {
   return (
-    <ul>
+    <div>
       {data.map(({ title, id }) => (
-<MoviesItem key={id} title={title}/>
+        <div key={id}>
+          <Link to={`/movies/${id}`}>{title}</Link>
+        </div>
       ))}
-    </ul>
+    </div>
   );
 };
-

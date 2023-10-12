@@ -13,6 +13,7 @@ import { Loader } from 'components/Loader/Loader';
 export const MovieDetails = () => {
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState([]);
+  const [movieGenres, setMovieGenres] = useState([])
   const [isLoading, setIsLoading] = useState(false);
   const [apiError, setApiError] = useState(false);
 
@@ -24,8 +25,12 @@ export const MovieDetails = () => {
         if (movieDetails.length === 0) {
           setMovieDetails(result);
         }
+       
+        if(movieGenres.length ===0){
+          const genre =  result.genres.map(e=>e.name).join(", ")
+          setMovieGenres(genre)
+          }
 
-        console.log(result);
       } catch (error) {
         setApiError(true);
         Notiflix.Notify.failure(
@@ -36,11 +41,11 @@ export const MovieDetails = () => {
       }
     };
     fetchMovie();
-  }, [movieId, apiError, movieDetails]);
+  }, [movieId, apiError, movieDetails, movieGenres]);
 
   return (
     <div className={css.container}>
-      <MovieInfo movie={movieDetails} />
+      <MovieInfo movie={movieDetails}  genre={movieGenres}/>
       {isLoading && <Loader />}
       <div className={css.options}>
         <NavLink className={({isActive})=>`${css["nav_link"]} ${isActive ? css.active : ''}`} to="cast">Cast</NavLink>

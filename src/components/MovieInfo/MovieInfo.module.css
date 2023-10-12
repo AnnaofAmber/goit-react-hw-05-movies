@@ -18,12 +18,23 @@ max-width: 600px;
 
 .title{
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 color: #F99417;
 }
 
-.genre{
+.undertitle{
+    background-color: #ffffff22;
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: space-around;
+    font-size: 14px;
+    padding: 5px 10px;
+    max-width: 500px;
+    border-radius: 4px;
+}
 
+.genre{
+text-transform: lowercase;
 }
 
 .overview{
@@ -33,6 +44,3 @@ text-indent: 20px;
 max-width: 500px;
 }
 
-.vote{
-
-}

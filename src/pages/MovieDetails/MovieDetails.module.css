@@ -3,17 +3,17 @@
 }
 
 .options{
-    padding: 30px 50px;
+    padding: 20px 150px;
     background-color: #F5F5F5;
     box-shadow: -1px 7px 5px 0px rgba(0,0,0,0.39);
     display: flex;
-gap: 20px;
+gap: 40px;
 }
 
 .nav_link{
     text-transform: uppercase;
     font-weight: 700;
-    font-size: 30px;
+    font-size: 25px;
     color: #363062;
 }
 

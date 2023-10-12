@@ -17,8 +17,10 @@ export const Cast = () => {
       try {
         setIsLoading(true);
         const result = await fetchCast(movieId);
-
-        if (cast.length === 0) {
+        if(result.length === 0){
+            return
+          }
+        else if (cast.length === 0) {
           setCast(result);
         }
       } catch (error) {
@@ -35,7 +37,7 @@ export const Cast = () => {
 
   return (
     <div>
-      <MovieCastList data={cast} />
+      {cast.length>0?<MovieCastList data={cast} />:"Sorry! We couldn't find any actors from this movie!" }
       {isLoading && <Loader />}
     </div>
   );

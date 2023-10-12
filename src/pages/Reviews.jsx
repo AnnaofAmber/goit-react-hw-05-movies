@@ -18,10 +18,15 @@ export const Reviews = () => {
       try {
         setIsLoading(true);
         const result = await fetchReview(movieId);
-
-        if (reviews.length === 0) {
+        
+        if(result.length === 0){
+          return
+        } else if (reviews.length === 0){
           setReviews(result);
         }
+
+          
+
       } catch (error) {
         setApiError(true);
         Notiflix.Notify.failure(
@@ -36,7 +41,7 @@ export const Reviews = () => {
 
   return (
     <div>
-      <MovieReviewsList data={reviews} />
+      {reviews.length>0? <MovieReviewsList data={reviews}/> : "There are no reviews yet"}
       {isLoading && <Loader />}
     </div>
   );

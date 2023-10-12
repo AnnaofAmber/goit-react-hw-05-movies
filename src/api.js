@@ -12,9 +12,15 @@ export const fetchTrendingMovies = async()=>{
 
 export const fetchMovieByID = async movieId=>{
     const {data} = await axios.get(`${BASE_URL}/movie/${movieId}?api_key=${API_KEY}`)
-  
-    console.log(data);
     return data
 
 }
 
+
+export const fetchCast = async movieId =>{
+    const {data} = await axios.get(`${BASE_URL}/movie/${movieId}/credits?api_key=${API_KEY}`)
+    const {cast} = data
+    console.log(data);
+    return cast
+    
+} 

@@ -7,7 +7,7 @@ export const MoviesItem = ({movie, genre})=>{
             <h2>{title}</h2>
             <p>{genre}</p>
             <p>{overview}</p>
-            <p>{vote_average * 10}%</p>
+            <p>{(vote_average * 10).toFixed(1)}%</p>
         </div>
     )
 }

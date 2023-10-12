@@ -1,7 +1,11 @@
-import { Route, Routes, useParams } from "react-router-dom"
+import { NavLink, Route, Routes, useParams } from "react-router-dom"
 import { MoviesItem } from "components/MoviesItem/MoviesItem"
 import { fetchMovieByID } from "api"
 import { useEffect, useState } from "react"
+
+
+import { Cast } from "./Cast"
+import { Reviews } from "./Reviews"
 
 export const MovieDetails = ()=>{
  
@@ -30,13 +34,12 @@ export const MovieDetails = ()=>{
     return (
    <div>
      <MoviesItem movie={movieDetails} />
-
+        <NavLink to="cast">Cast</NavLink>
+        <NavLink to="reviews">Reviews</NavLink>
         <Routes>
-        <Route path="/movies/:movieId/cast"/>
-        <Route path="/movies/:movieId/reviews"/>
+        <Route path="/cast" element={<Cast/>}/>
+        <Route path="/reviews" element={<Reviews/>}/>
         </Routes>
-
-
    </div>
     )
 }

@@ -18,6 +18,7 @@ export const Home = () => {
         if (movies.length === 0) {
           setMovies(response);
         }
+        console.log(response);
       } catch (error) {
         setApiError(true);
         Notiflix.Notify.failure(

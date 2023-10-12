@@ -1,0 +1,38 @@
+.header{
+padding: 30px 50px;
+background-color: #363062;
+box-shadow: -1px 7px 5px 0px rgba(0,0,0,0.39);
+
+
+
+}
+
+.nav{
+
+
+}
+
+.header_list{
+
+display: flex;
+gap: 20px;
+}
+
+.header_item{
+
+}
+
+.nav_link{
+text-transform: uppercase;
+font-weight: 700;
+font-size: 30px;
+color: #F5F5F5;
+}
+
+.nav_link.active{
+    color: #F99417;
+}
+
+.nav_link:hover{
+    color: #fbf389;
+}

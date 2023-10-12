@@ -1,3 +1,4 @@
+import css from './App.module.css'
 import {Route, Routes } from 'react-router-dom';
 
 import { Header } from './Header/Header';
@@ -12,7 +13,7 @@ import { MovieDetails } from 'pages/MovieDetails';
 
 export const App = () => {
   return (
-    <div>
+    <div className={css.container}>
       <Header/>
       <Routes>
         <Route path='/' element={<Home/>}/>

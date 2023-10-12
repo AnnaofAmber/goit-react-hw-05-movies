@@ -1,5 +1,5 @@
 import { NavLink, Route, Routes, useParams } from "react-router-dom"
-import { MoviesItem } from "components/MoviesItem/MoviesItem"
+import { MovieInfo } from "components/MovieInfo/MovieInfo"
 import { fetchMovieByID } from "api"
 import { useEffect, useState } from "react"
 
@@ -11,6 +11,8 @@ export const MovieDetails = ()=>{
  
   const {movieId} = useParams()
   const [movieDetails, setMovieDetails] = useState([])
+  const [isLoading, setIsLoading] = useState(false);
+  const [apiError, setApiError] = useState(false);
 
   useEffect(()=>{
   
@@ -23,8 +25,11 @@ export const MovieDetails = ()=>{
 
       console.log(result);
     }
-    catch{}
-    finally{}
+    catch (error) {
+      setApiError(true);
+    } finally {
+      setIsLoading(false);
+    }
    }
  fetchMovie()
 
@@ -33,7 +38,7 @@ export const MovieDetails = ()=>{
 
     return (
    <div>
-     <MoviesItem movie={movieDetails} />
+     <MovieInfo movie={movieDetails} />
         <NavLink to="cast">Cast</NavLink>
         <NavLink to="reviews">Reviews</NavLink>
         <Routes>

@@ -8,16 +8,22 @@ export const Cast = ()=>{
 
 const {movieId} = useParams()
 const [cast, setCast] = useState([])
-
+const [isLoading, setIsLoading] = useState(false);
+  const [apiError, setApiError] = useState(false);
 
 useEffect(()=>{
 
     const fetchMovieCast = async()=> {
-        const result = await fetchCast(movieId)
+        try{const result = await fetchCast(movieId)
 console.log(cast);
         if(cast.length === 0){
             setCast(result)
-        }
+        }}
+        catch (error) {
+            setApiError(true);
+          } finally {
+            setIsLoading(false);
+          }
     }
 fetchMovieCast()
 })

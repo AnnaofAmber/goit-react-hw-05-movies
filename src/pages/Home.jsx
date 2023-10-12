@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 
 export const Home = () => {
   const [movies, setMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [apiError, setApiError] = useState(false);
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -12,11 +14,10 @@ export const Home = () => {
         if (movies.length === 0) {
           setMovies(response);
         }
-        console.log(response);
       } catch (error) {
-        console.log(error);
+        setApiError(true);
       } finally {
-        // console.log('asd');
+        setIsLoading(false);
       }
     };
     fetchMovies();

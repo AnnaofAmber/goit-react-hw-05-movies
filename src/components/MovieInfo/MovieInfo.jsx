@@ -1,4 +1,4 @@
-export const MoviesItem = ({movie, genre})=>{
+export const MovieInfo = ({movie, genre})=>{
     const {title, vote_average, poster_path, overview} = movie
   
     return(

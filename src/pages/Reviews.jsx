@@ -8,14 +8,21 @@ import { MovieReviewsList } from "components/MovieReviews/MovieReviewsList"
 export const Reviews = ()=>{
     const {movieId} = useParams()
     const [reviews, setReviews] = useState([])
+    const [isLoading, setIsLoading] = useState(false);
+  const [apiError, setApiError] = useState(false);
 
 useEffect(()=>{
     const fetchMovieReview = async()=>{
-        const result = await fetchReview(movieId)
+try{        const result = await fetchReview(movieId)
 
         if(reviews.length === 0){
             setReviews(result)
-        }
+        }}
+        catch (error) {
+            setApiError(true);
+          } finally {
+            setIsLoading(false);
+          }
 
     }
     fetchMovieReview()

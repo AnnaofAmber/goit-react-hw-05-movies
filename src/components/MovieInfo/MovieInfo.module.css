@@ -1,0 +1,38 @@
+.movie_container{
+padding: 30px 70px;
+display: flex;
+gap: 70px;
+justify-content: center;
+background-color: #4D4C7D;
+color: #f5f5f5;
+}
+
+.img{
+max-width: 100%;
+}
+
+.info{
+text-align: center;
+max-width: 600px;
+}
+
+.title{
+    margin-top: 20px;
+    margin-bottom: 20px;
+color: #F99417;
+}
+
+.genre{
+
+}
+
+.overview{
+text-align: justify;
+line-height: 1.5;
+text-indent: 20px;
+max-width: 500px;
+}
+
+.vote{
+
+}

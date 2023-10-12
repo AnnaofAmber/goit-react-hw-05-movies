@@ -1,6 +1,9 @@
 import { MoviesList } from 'components/MoviesList/MoviesList';
 import { fetchTrendingMovies } from 'api';
 import { useEffect, useState } from 'react';
+import Notiflix from 'notiflix';
+
+import { Loader } from 'components/Loader/Loader';
 
 export const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -10,23 +13,28 @@ export const Home = () => {
   useEffect(() => {
     const fetchMovies = async () => {
       try {
+        setIsLoading(true);
         const response = await fetchTrendingMovies();
         if (movies.length === 0) {
           setMovies(response);
         }
       } catch (error) {
         setApiError(true);
+        Notiflix.Notify.failure(
+          `Oops! Something went wrong! Error ${apiError} Try reloading the page!`
+        );
       } finally {
         setIsLoading(false);
       }
     };
     fetchMovies();
-  });
+  }, [apiError, movies]);
 
   return (
     <div>
       <h1>Trending movies</h1>
       <MoviesList data={movies} />
+      {isLoading && <Loader />}
     </div>
   );
 };

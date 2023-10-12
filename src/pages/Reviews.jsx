@@ -1,35 +1,43 @@
-import { fetchReview } from "api"
+import { fetchReview } from 'api';
 
-import { useParams } from "react-router-dom"
-import { useEffect, useState } from "react"
+import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import Notiflix from 'notiflix';
 
-import { MovieReviewsList } from "components/MovieReviews/MovieReviewsList"
+import { MovieReviewsList } from 'components/MovieReviews/MovieReviewsList';
+import { Loader } from 'components/Loader/Loader';
 
-export const Reviews = ()=>{
-    const {movieId} = useParams()
-    const [reviews, setReviews] = useState([])
-    const [isLoading, setIsLoading] = useState(false);
+export const Reviews = () => {
+  const { movieId } = useParams();
+  const [reviews, setReviews] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [apiError, setApiError] = useState(false);
 
-useEffect(()=>{
-    const fetchMovieReview = async()=>{
-try{        const result = await fetchReview(movieId)
+  useEffect(() => {
+    const fetchMovieReview = async () => {
+      try {
+        setIsLoading(true);
+        const result = await fetchReview(movieId);
 
-        if(reviews.length === 0){
-            setReviews(result)
-        }}
-        catch (error) {
-            setApiError(true);
-          } finally {
-            setIsLoading(false);
-          }
+        if (reviews.length === 0) {
+          setReviews(result);
+        }
+      } catch (error) {
+        setApiError(true);
+        Notiflix.Notify.failure(
+          `Oops! Something went wrong! Error ${apiError} Try reloading the page!`
+        );
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchMovieReview();
+  });
 
-    }
-    fetchMovieReview()
-})
-
-
-    return(
-        <MovieReviewsList data={reviews}/>
-    )
-}
+  return (
+    <div>
+      <MovieReviewsList data={reviews} />
+      {isLoading && <Loader />}
+    </div>
+  );
+};

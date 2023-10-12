@@ -2,10 +2,11 @@ import { NavLink, Route, Routes, useParams } from "react-router-dom"
 import { MovieInfo } from "components/MovieInfo/MovieInfo"
 import { fetchMovieByID } from "api"
 import { useEffect, useState } from "react"
-
+import Notiflix from 'notiflix';
 
 import { Cast } from "./Cast"
 import { Reviews } from "./Reviews"
+import { Loader } from 'components/Loader/Loader';
 
 export const MovieDetails = ()=>{
  
@@ -18,6 +19,7 @@ export const MovieDetails = ()=>{
   
    const fetchMovie = async()=>{
     try{
+      setIsLoading(true);
       const result = await fetchMovieByID(movieId)
       if(movieDetails.length === 0){
          setMovieDetails(result)
@@ -27,18 +29,22 @@ export const MovieDetails = ()=>{
     }
     catch (error) {
       setApiError(true);
+      Notiflix.Notify.failure(
+        `Oops! Something went wrong! Error ${apiError} Try reloading the page!`
+      );
     } finally {
       setIsLoading(false);
     }
    }
  fetchMovie()
 
-  })
+  }, [movieId, apiError, movieDetails])
 
 
     return (
    <div>
      <MovieInfo movie={movieDetails} />
+     {isLoading && <Loader />}
         <NavLink to="cast">Cast</NavLink>
         <NavLink to="reviews">Reviews</NavLink>
         <Routes>

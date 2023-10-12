@@ -1,3 +1,4 @@
+import css from "./Reviews.module.css"
 import { fetchReview } from 'api';
 
 import { useParams } from 'react-router-dom';
@@ -23,7 +24,10 @@ export const Reviews = () => {
           return
         } else if (reviews.length === 0){
           setReviews(result);
+
         }
+
+      
 
           
 
@@ -41,7 +45,7 @@ export const Reviews = () => {
 
   return (
     <div>
-      {reviews.length>0? <MovieReviewsList data={reviews}/> : "There are no reviews yet"}
+      {reviews.length>0? <MovieReviewsList data={reviews}/> : <div className={css.review}>There are no reviews yet!</div>}
       {isLoading && <Loader />}
     </div>
   );

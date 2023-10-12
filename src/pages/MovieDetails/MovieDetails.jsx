@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import Notiflix from 'notiflix';
 
 import { Cast } from '../Cast';
-import { Reviews } from '../Reviews';
+import { Reviews } from '../Reviews/Reviews';
 import { Loader } from 'components/Loader/Loader';
 
 export const MovieDetails = () => {

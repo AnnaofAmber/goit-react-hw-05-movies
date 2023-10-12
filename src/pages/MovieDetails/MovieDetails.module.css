@@ -1,0 +1,26 @@
+.container{
+    background-color: #4D4C7D;
+}
+
+.options{
+    padding: 30px 50px;
+    background-color: #F5F5F5;
+    box-shadow: -1px 7px 5px 0px rgba(0,0,0,0.39);
+    display: flex;
+gap: 20px;
+}
+
+.nav_link{
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 30px;
+    color: #363062;
+}
+
+.nav_link.active{
+    color: #F99417;
+}
+
+.nav_link:hover{
+    color: #ff8f07b2;
+}

@@ -13,7 +13,7 @@ import { useEffect, useState, lazy, Suspense, useRef } from 'react';
 
 import { MovieInfo } from 'components/MovieInfo/MovieInfo';
 import { Loader } from 'components/Loader/Loader';
-import { fetchMovieByID } from 'api';
+import { fetchMovieByID } from 'pages/api/api';
 
 const Cast = lazy(() => import('../Cast/Cast'));
 const Reviews = lazy(() => import('../Reviews/Reviews'));

@@ -4,7 +4,7 @@ import Notiflix from 'notiflix';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { fetchCast } from 'api';
+import { fetchCast } from 'pages/api/api';
 
 import { MovieCastList } from 'components/MovieCast/MovieCastList';
 import { Loader } from 'components/Loader/Loader';

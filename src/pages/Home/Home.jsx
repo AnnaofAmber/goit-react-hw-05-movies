@@ -3,7 +3,7 @@ import Notiflix from 'notiflix';
 
 import { useEffect, useState } from 'react';
 
-import { fetchTrendingMovies } from 'api';
+import { fetchTrendingMovies } from 'pages/api/api';
 
 import { Loader } from 'components/Loader/Loader';
 import { MoviesList } from 'components/MoviesList/MoviesList';

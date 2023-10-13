@@ -7,7 +7,7 @@ import { MovieSearch } from 'components/MovieSearch/MovieSearch';
 import { MoviesList } from 'components/MoviesList/MoviesList';
 import { Loader } from 'components/Loader/Loader';
 
-import { fetchMovieByName } from 'api';
+import { fetchMovieByName } from 'pages/api/api';
 
 const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();

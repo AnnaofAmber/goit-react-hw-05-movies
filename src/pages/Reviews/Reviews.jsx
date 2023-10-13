@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import { MovieReviewsList } from 'components/MovieReviews/MovieReviewsList';
 import { Loader } from 'components/Loader/Loader';
 
-import { fetchReview } from 'api';
+import { fetchReview } from 'pages/api/api';
 
 const Reviews = () => {
   const { movieId } = useParams();

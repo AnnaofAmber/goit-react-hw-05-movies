@@ -20,7 +20,6 @@ const Movies = () => {
 
   useEffect(() => {
     if (!query) {
-      Notiflix.Notify.warning(`Please enter movie name!`);
       setMoviesList([])
       return;
     }
@@ -51,6 +50,10 @@ const Movies = () => {
   const handleSubmit = e => {
     e.preventDefault();
     const searchValue = e.currentTarget.elements.serchMovieName.value;
+    if(searchValue===""){
+        Notiflix.Notify.warning(`Please enter movie name!`);
+      }
+    
     setSearchParams({ query: searchValue });
   };
 

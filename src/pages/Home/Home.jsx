@@ -36,6 +36,7 @@ import { Loader } from 'components/Loader/Loader';
     <div className={css.container}>
       <h1 className={css.title}>Trending movies</h1>
       <MoviesList data={movies} />
+      <Loader></Loader>
       {isLoading && <Loader />}
     </div>
   );

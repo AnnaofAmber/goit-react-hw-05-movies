@@ -1,13 +1,17 @@
-.item{
-    background-color: #f5f5f5;
-    border-radius: 5px;
-    padding: 20px 20px;
-    text-align: justify;
-    line-height: 1.5;
+.item {
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  padding: 20px 20px;
+  text-align: justify;
+  line-height: 1.5;
+  color: #363062;
 }
-.author{
-color: #F99417;
-font-weight: 700;
-margin-bottom: 10px;
 
+.author {
+  color: #4d4c7d;
+}
+.name {
+  color: #f99417;
+  font-weight: 700;
+  margin-bottom: 10px;
 }

@@ -6,9 +6,11 @@ import { fetchMovieByID } from 'api';
 import { useEffect, useState } from 'react';
 import Notiflix from 'notiflix';
 
-import { Cast } from '../Cast';
+import { Cast } from '../Cast/Cast';
 import { Reviews } from '../Reviews/Reviews';
 import { Loader } from 'components/Loader/Loader';
+
+// const Cast = lazy(()=> import('../Cast'))
 
 export const MovieDetails = () => {
   const { movieId } = useParams();
@@ -51,10 +53,12 @@ export const MovieDetails = () => {
         <NavLink className={({isActive})=>`${css["nav_link"]} ${isActive ? css.active : ''}`} to="cast">Cast</NavLink>
         <NavLink className={({isActive})=>`${css["nav_link"]} ${isActive ? css.active : ''}`} to="reviews">Reviews</NavLink>
       </div>
-      <Routes>
+    <div>
+    <Routes>
         <Route path="/cast" element={<Cast />} />
         <Route path="/reviews" element={<Reviews />} />
       </Routes>
+    </div>
     </div>
   );
 };

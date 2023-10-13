@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react"
-import { Link, useLocation, useSearchParams } from "react-router-dom"
+import { useLocation, useSearchParams } from "react-router-dom"
 import Notiflix from "notiflix"
 import { fetchMovieByName } from "api"
 import { MovieSearch } from "components/MovieSearch/MovieSearch"
 import { MoviesList } from "components/MoviesList/MoviesList"
-import css from "./Movies.module.css"
 export const Movies = ()=>{
 
     const [searchParams, setSearchParams] = useSearchParams()

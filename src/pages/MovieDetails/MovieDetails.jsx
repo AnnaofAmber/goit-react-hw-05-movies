@@ -61,7 +61,7 @@ const MovieDetails = () => {
         </Link>
       </div>
       {isLoading && <Loader />}
-      {movieDetails.length > 0 && (
+      {!apiError && 
         <div>
           <MovieInfo movie={movieDetails} genre={movieGenres} />
           <div className={css.options}>
@@ -83,7 +83,7 @@ const MovieDetails = () => {
             </NavLink>
           </div>
         </div>
-      )}
+    }
       <div>
         <Suspense fallback={<Loader />}>
           <Routes>

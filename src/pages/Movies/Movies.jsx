@@ -19,14 +19,22 @@ const Movies = () => {
   const query = searchParams.get('query');
 
   useEffect(() => {
-    if (!query) return;
-
+    if (!query) {
+      Notiflix.Notify.warning(`Please enter movie name!`);
+      setMoviesList([])
+      return;
+    }
     const fetchMovie = async () => {
       try {
         setIsLoading(true);
         const result = await fetchMovieByName(query);
-
-        setMoviesList(result);
+        if (result.length === 0) {
+          Notiflix.Notify.failure(
+            `Oops! Seems like we do not have movie with title ${query}!`
+          );
+        } else {
+          setMoviesList(result);
+        }
       } catch (error) {
         setApiError(true);
         Notiflix.Notify.failure(

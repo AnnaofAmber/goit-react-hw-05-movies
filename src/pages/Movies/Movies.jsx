@@ -4,6 +4,7 @@ import Notiflix from "notiflix"
 import { fetchMovieByName } from "api"
 import { MovieSearch } from "components/MovieSearch/MovieSearch"
 import { MoviesList } from "components/MoviesList/MoviesList"
+import { Loader } from "components/Loader/Loader"
 
 
  const Movies = ()=>{
@@ -53,6 +54,7 @@ import { MoviesList } from "components/MoviesList/MoviesList"
     return (
         <div>
             <MovieSearch handleSubmit={handleSubmit}/>
+            {isLoading && <Loader />}
            {moviesList.length !==0 && <MoviesList data={moviesList} location={location}/>}
         </div>
     )

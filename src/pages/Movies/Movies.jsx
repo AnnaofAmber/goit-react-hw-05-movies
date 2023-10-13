@@ -1,63 +1,60 @@
-import { useEffect, useState } from "react"
-import { useLocation, useSearchParams } from "react-router-dom"
-import Notiflix from "notiflix"
-import { fetchMovieByName } from "api"
-import { MovieSearch } from "components/MovieSearch/MovieSearch"
-import { MoviesList } from "components/MoviesList/MoviesList"
-import { Loader } from "components/Loader/Loader"
+import Notiflix from 'notiflix';
 
+import { useEffect, useState } from 'react';
+import { useLocation, useSearchParams } from 'react-router-dom';
 
- const Movies = ()=>{
+import { MovieSearch } from 'components/MovieSearch/MovieSearch';
+import { MoviesList } from 'components/MoviesList/MoviesList';
+import { Loader } from 'components/Loader/Loader';
 
-    const [searchParams, setSearchParams] = useSearchParams()
-    const location = useLocation()
-    const [moviesList, setMoviesList] = useState([])
-    const [isLoading, setIsLoading] = useState(false);
-    const [apiError, setApiError] = useState(false);
+import { fetchMovieByName } from 'api';
 
-    const query = searchParams.get('query')
+const Movies = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
+  const [moviesList, setMoviesList] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [apiError, setApiError] = useState(false);
 
-    useEffect(()=>{
-        if(!query) return
+  const query = searchParams.get('query');
 
-        const fetchMovie = async () => {
-            try {
-              setIsLoading(true);
-              const result = await fetchMovieByName(query);
+  useEffect(() => {
+    if (!query) return;
 
-              setMoviesList(result)
-      
-            } catch (error) {
-              setApiError(true);
-              Notiflix.Notify.failure(
-                `Oops! Something went wrong! Error ${apiError} Try reloading the page!`
-              );
-            } finally {
-              setIsLoading(false);
-            }
-        }
+    const fetchMovie = async () => {
+      try {
+        setIsLoading(true);
+        const result = await fetchMovieByName(query);
 
-        fetchMovie()
+        setMoviesList(result);
+      } catch (error) {
+        setApiError(true);
+        Notiflix.Notify.failure(
+          `Oops! Something went wrong! Error ${apiError} Try reloading the page!`
+        );
+      } finally {
+        setIsLoading(false);
+      }
+    };
 
+    fetchMovie();
+  }, [query, apiError]);
 
-    }, [query, apiError])
+  const handleSubmit = e => {
+    e.preventDefault();
+    const searchValue = e.currentTarget.elements.serchMovieName.value;
+    setSearchParams({ query: searchValue });
+  };
 
+  return (
+    <div>
+      <MovieSearch handleSubmit={handleSubmit} />
+      {isLoading && <Loader />}
+      {moviesList.length !== 0 && (
+        <MoviesList data={moviesList} location={location} />
+      )}
+    </div>
+  );
+};
 
-    const handleSubmit = e =>{
-        e.preventDefault()
-        const searchValue = e.currentTarget.elements.serchMovieName.value
-        setSearchParams({query:searchValue})
-    }
-    const map = moviesList.map(e=>e.id)
-    console.log(map);
-
-    return (
-        <div>
-            <MovieSearch handleSubmit={handleSubmit}/>
-            {isLoading && <Loader />}
-           {moviesList.length !==0 && <MoviesList data={moviesList} location={location}/>}
-        </div>
-    )
-}
-
-export default Movies
+export default Movies;

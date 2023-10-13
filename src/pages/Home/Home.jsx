@@ -1,12 +1,14 @@
-import { MoviesList } from 'components/MoviesList/MoviesList';
-import { fetchTrendingMovies } from 'api';
-import { useEffect, useState } from 'react';
+import css from './Home.module.css';
 import Notiflix from 'notiflix';
 
-import css from "./Home.module.css"
-import { Loader } from 'components/Loader/Loader';
+import { useEffect, useState } from 'react';
 
- const Home = () => {
+import { fetchTrendingMovies } from 'api';
+
+import { Loader } from 'components/Loader/Loader';
+import { MoviesList } from 'components/MoviesList/MoviesList';
+
+const Home = () => {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [apiError, setApiError] = useState(false);
@@ -19,7 +21,6 @@ import { Loader } from 'components/Loader/Loader';
         if (movies.length === 0) {
           setMovies(response);
         }
-        console.log(response);
       } catch (error) {
         setApiError(true);
         Notiflix.Notify.failure(
@@ -34,12 +35,15 @@ import { Loader } from 'components/Loader/Loader';
 
   return (
     <div className={css.container}>
-      <h1 className={css.title}>Trending movies</h1>
-      <MoviesList data={movies} />
-      <Loader></Loader>
+      {movies.length > 0 && (
+        <div>
+          <h1 className={css.title}>Trending movies</h1>
+          <MoviesList data={movies} />
+        </div>
+      )}
       {isLoading && <Loader />}
     </div>
   );
 };
 
-export default Home
+export default Home;

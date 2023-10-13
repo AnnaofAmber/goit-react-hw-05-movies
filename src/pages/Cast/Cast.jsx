@@ -5,6 +5,7 @@ import Notiflix from 'notiflix';
 
 import { MovieCastList } from 'components/MovieCast/MovieCastList';
 import { Loader } from 'components/Loader/Loader';
+import css from "./Cast.module.css"
 
  const Cast = () => {
   const { movieId } = useParams();
@@ -37,7 +38,7 @@ import { Loader } from 'components/Loader/Loader';
 
   return (
     <div>
-      {cast.length>0?<MovieCastList data={cast} />:"Sorry! We couldn't find any actors from this movie!" }
+      {cast.length>0?<MovieCastList data={cast} />: <div className={css.cast}>Sorry! We couldn't find any actors from this movie!</div> }
       {isLoading && <Loader />}
     </div>
   );

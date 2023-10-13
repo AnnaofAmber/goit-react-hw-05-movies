@@ -50,7 +50,7 @@ const Reviews = lazy(()=> import('../Reviews/Reviews'))
 
   return (
     <div className={css.container}>
-      <Link to={backLinkHref.current}>Go back</Link>
+      <div className={css.box_link}><Link className={css.link_back} to={backLinkHref.current}>Go back</Link></div>
       <MovieInfo movie={movieDetails}  genre={movieGenres}/>
       {isLoading && <Loader />}
       <div className={css.options}>

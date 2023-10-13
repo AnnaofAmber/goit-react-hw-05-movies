@@ -1,5 +1,6 @@
 .container{
     background-color: #4D4C7D;
+    padding: 40px 30px;
 }
 
 .options{
@@ -8,6 +9,38 @@
     box-shadow: -1px 7px 5px 0px rgba(0,0,0,0.39);
     display: flex;
 gap: 40px;
+}
+.box_link{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #F5F5F5;
+    text-align: center;
+    padding: 10px;
+    transition-property: transform;
+transition-duration: 250ms;
+transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+    
+}
+
+.box_link:hover{
+    box-shadow: 0px 7px 12px 0px rgba(0,0,0,0.59);
+    transform: scale(1.1);
+    
+}
+
+.link_back{
+font-weight: 700;
+color: #363062;
+}
+
+.link_back:hover{
+    color: #F99417;
+}
+
+.link_back:focus{
+    color: #F99417;
 }
 
 .nav_link{

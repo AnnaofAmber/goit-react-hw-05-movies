@@ -1,11 +1,53 @@
 .form{
-
+padding: 60px 100px;
+display: flex;
+gap: 30px;
+align-items: center;
 }
 
 .input{
+width: 300px;
+height: 46px;
+border: none;
+outline: 2px solid #363062 ;
+border-radius: 4px;
+
+
+font-size: 18px;
+color: #363062;
+
+padding: 10px 15px;
 
 }
 
+.input:focus{
+    outline: 2px solid #F99417;
+}
+
+.input:hover{
+    outline: 2px solid #F99417;
+}
+
 .btn{
-    
+width: 100px;
+height: 40px;
+border: none;
+outline: 2px solid #363062 ;
+border-radius: 4px;
+
+cursor: pointer;
+
+background-color: #4D4C7D;
+color: #F5F5F5;
+font-weight: 700;
+font-size: 18px;
+}
+
+.btn:hover{
+    outline: 2px solid #F99417;
+    color: #F5F5F5;
+    background-color: #F99417;
+}
+.btn:focus{
+    outline: 2px solid #F99417;
 }

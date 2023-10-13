@@ -1,13 +1,11 @@
 import css from "./MovieDetails.module.css"
 
-import { NavLink, Route, Routes, useParams } from 'react-router-dom';
+import { Link, NavLink, Route, Routes, useLocation, useParams } from 'react-router-dom';
 import { MovieInfo } from 'components/MovieInfo/MovieInfo';
 import { fetchMovieByID } from 'api';
-import { useEffect, useState, lazy, Suspense } from 'react';
+import { useEffect, useState, lazy, Suspense, useRef } from 'react';
 import Notiflix from 'notiflix';
 
-// import { Cast } from '../Cast/Cast';
-// import { Reviews } from '../Reviews/Reviews';
 import { Loader } from 'components/Loader/Loader';
 
 const Cast = lazy(()=> import('../Cast/Cast'))
@@ -16,6 +14,9 @@ const Reviews = lazy(()=> import('../Reviews/Reviews'))
 
  const MovieDetails = () => {
   const { movieId } = useParams();
+  const location = useLocation()
+  const backLinkHref = useRef(location.state?.from ?? '/')
+
   const [movieDetails, setMovieDetails] = useState([]);
   const [movieGenres, setMovieGenres] = useState([])
   const [isLoading, setIsLoading] = useState(false);
@@ -49,6 +50,7 @@ const Reviews = lazy(()=> import('../Reviews/Reviews'))
 
   return (
     <div className={css.container}>
+      <Link to={backLinkHref.current}>Go back</Link>
       <MovieInfo movie={movieDetails}  genre={movieGenres}/>
       {isLoading && <Loader />}
       <div className={css.options}>
@@ -56,7 +58,7 @@ const Reviews = lazy(()=> import('../Reviews/Reviews'))
         <NavLink className={({isActive})=>`${css["nav_link"]} ${isActive ? css.active : ''}`} to="reviews">Reviews</NavLink>
       </div>
     <div>
-    <Suspense>
+    <Suspense fallback={<Loader/>}>
     <Routes>
 <Route path="/cast" element={<Cast />} />
 <Route path="/reviews" element={<Reviews />} />

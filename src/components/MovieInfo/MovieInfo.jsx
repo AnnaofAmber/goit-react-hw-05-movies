@@ -1,6 +1,6 @@
 import css from "./MovieInfo.module.css"
 
-export const MovieInfo = ({movie, genre})=>{
+export const MovieInfo = ({movie, genre, onButtonReturn})=>{
     const {title, vote_average, poster_path, overview} = movie
   
     return(

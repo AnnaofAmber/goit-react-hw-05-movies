@@ -5,7 +5,7 @@ import Notiflix from 'notiflix';
 
 import { Loader } from 'components/Loader/Loader';
 
-export const Home = () => {
+ const Home = () => {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [apiError, setApiError] = useState(false);
@@ -39,3 +39,5 @@ export const Home = () => {
     </div>
   );
 };
+
+export default Home

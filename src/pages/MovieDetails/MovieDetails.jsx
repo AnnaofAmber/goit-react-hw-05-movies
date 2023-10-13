@@ -3,16 +3,18 @@ import css from "./MovieDetails.module.css"
 import { NavLink, Route, Routes, useParams } from 'react-router-dom';
 import { MovieInfo } from 'components/MovieInfo/MovieInfo';
 import { fetchMovieByID } from 'api';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, lazy, Suspense } from 'react';
 import Notiflix from 'notiflix';
 
-import { Cast } from '../Cast/Cast';
-import { Reviews } from '../Reviews/Reviews';
+// import { Cast } from '../Cast/Cast';
+// import { Reviews } from '../Reviews/Reviews';
 import { Loader } from 'components/Loader/Loader';
 
-// const Cast = lazy(()=> import('../Cast'))
+const Cast = lazy(()=> import('../Cast/Cast'))
+const Reviews = lazy(()=> import('../Reviews/Reviews'))
 
-export const MovieDetails = () => {
+
+ const MovieDetails = () => {
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState([]);
   const [movieGenres, setMovieGenres] = useState([])
@@ -54,11 +56,15 @@ export const MovieDetails = () => {
         <NavLink className={({isActive})=>`${css["nav_link"]} ${isActive ? css.active : ''}`} to="reviews">Reviews</NavLink>
       </div>
     <div>
+    <Suspense>
     <Routes>
-        <Route path="/cast" element={<Cast />} />
-        <Route path="/reviews" element={<Reviews />} />
-      </Routes>
+<Route path="/cast" element={<Cast />} />
+<Route path="/reviews" element={<Reviews />} />
+</Routes> 
+    </Suspense>
     </div>
     </div>
   );
 };
+
+export default MovieDetails

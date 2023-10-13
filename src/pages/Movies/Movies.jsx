@@ -4,7 +4,9 @@ import Notiflix from "notiflix"
 import { fetchMovieByName } from "api"
 import { MovieSearch } from "components/MovieSearch/MovieSearch"
 import { MoviesList } from "components/MoviesList/MoviesList"
-export const Movies = ()=>{
+
+
+ const Movies = ()=>{
 
     const [searchParams, setSearchParams] = useSearchParams()
     const location = useLocation()
@@ -55,3 +57,5 @@ export const Movies = ()=>{
         </div>
     )
 }
+
+export default Movies

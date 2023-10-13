@@ -8,7 +8,7 @@ import Notiflix from 'notiflix';
 import { MovieReviewsList } from 'components/MovieReviews/MovieReviewsList';
 import { Loader } from 'components/Loader/Loader';
 
-export const Reviews = () => {
+ const Reviews = () => {
   const { movieId } = useParams();
   const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -50,3 +50,5 @@ export const Reviews = () => {
     </div>
   );
 };
+
+export default Reviews

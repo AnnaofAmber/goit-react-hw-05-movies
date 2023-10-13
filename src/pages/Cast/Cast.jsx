@@ -6,7 +6,7 @@ import Notiflix from 'notiflix';
 import { MovieCastList } from 'components/MovieCast/MovieCastList';
 import { Loader } from 'components/Loader/Loader';
 
-export const Cast = () => {
+ const Cast = () => {
   const { movieId } = useParams();
   const [cast, setCast] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -42,3 +42,5 @@ export const Cast = () => {
     </div>
   );
 };
+
+export default Cast

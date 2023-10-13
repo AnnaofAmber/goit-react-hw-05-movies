@@ -29,3 +29,10 @@ export const fetchReview = async movieId =>{
     const {results} = data
     return results
 }
+
+export const fetchMovieByName = async query =>{
+    const {data} = await axios.get(`${BASE_URL}/search/movie?query=${query}&api_key=${API_KEY}`)
+    const {results} = data
+console.log(results);
+return results
+}

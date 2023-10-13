@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
 import { Link, useLocation, useSearchParams } from "react-router-dom"
 import Notiflix from "notiflix"
-import { fetchMovieByID } from "api"
+import { fetchMovieByName } from "api"
 import { MovieSearch } from "components/MovieSearch/MovieSearch"
-
+import { MoviesList } from "components/MoviesList/MoviesList"
+import css from "./Movies.module.css"
 export const Movies = ()=>{
 
     const [searchParams, setSearchParams] = useSearchParams()
@@ -20,10 +21,9 @@ export const Movies = ()=>{
         const fetchMovie = async () => {
             try {
               setIsLoading(true);
-              const result = await fetchMovieByID(query);
+              const result = await fetchMovieByName(query);
 
-              setMoviesList([result])
-
+              setMoviesList(result)
       
             } catch (error) {
               setApiError(true);
@@ -46,11 +46,13 @@ export const Movies = ()=>{
         const searchValue = e.currentTarget.elements.serchMovieName.value
         setSearchParams({query:searchValue})
     }
+    const map = moviesList.map(e=>e.id)
+    console.log(map);
 
     return (
         <div>
             <MovieSearch handleSubmit={handleSubmit}/>
-            <Link to={`/movies`} />
+           {moviesList.length !==0 && <MoviesList data={moviesList} location={location}/>}
         </div>
     )
 }

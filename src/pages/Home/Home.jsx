@@ -3,6 +3,7 @@ import { fetchTrendingMovies } from 'api';
 import { useEffect, useState } from 'react';
 import Notiflix from 'notiflix';
 
+import css from "./Home.module.css"
 import { Loader } from 'components/Loader/Loader';
 
  const Home = () => {
@@ -32,8 +33,8 @@ import { Loader } from 'components/Loader/Loader';
   }, [apiError, movies]);
 
   return (
-    <div>
-      <h1>Trending movies</h1>
+    <div className={css.container}>
+      <h1 className={css.title}>Trending movies</h1>
       <MoviesList data={movies} />
       {isLoading && <Loader />}
     </div>

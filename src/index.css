@@ -2,6 +2,7 @@
 
 *{
   box-sizing: border-box;
+  
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@200;400;700;900&family=Roboto+Condensed:wght@400;700&display=swap');
@@ -28,7 +29,7 @@ ul{
     padding-left: 0;
     margin: 0;
 }
-p{
+p, h1{
     margin: 0;
 }
 a{
